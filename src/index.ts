@@ -1,1 +1,60 @@
-console.log("bruh");
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config();
+}
+
+import { Request, Response } from "express";
+
+// Dependecies
+import express from 'express';
+import { AddressInfo } from "net";
+import { Logger } from "../types/log";
+const app = express();
+const session = require('express-session');
+const useragent = require('express-useragent');
+const log: Logger = require('./log');
+
+log.info('Booting up... ', Date());
+
+// App config
+app.use(express.static("public"));
+app.use(useragent.express());
+app.use(express.urlencoded({extended: true}));
+app.use(express.json());
+app.use(session({
+  secret: process.env.SESSION_SECRET,
+  saveUninitialized: true,
+  resave: true,
+}));
+
+// Routing
+app.get('/', (req: Request, res: Response)=> {
+  // if (req.session && !req.session.userid) {    
+  //   res.sendFile(`${__dirname}/views/login.html`);
+  // } else {
+  //   if (req.useragent && req.useragent.isMobile) {
+  //     res.sendFile(`${__dirname}/views/index-mobile.html`);
+  //   } else {
+  //     res.sendFile(`${__dirname}/views/index.html`);
+  //   }
+  // }
+});
+
+app.get('/following', (req: Request, res: Response) => {
+  // if (req.session &&  !req.session.userid) {
+  //   res.send({
+  //     status: 'error',
+  //     message: 'no session'
+  //   });
+  //   return;
+  // } else {
+  //   spotifuncs.getFollowing(req.session && req.session.userid)
+  //   .then((result: any)=>{
+  //     res.send(result);
+  //   });
+  // }
+});
+
+// Start the server
+var listener = app.listen(process.env.PORT, () => {
+  log.info(`App is listening on port ${(listener.address() as AddressInfo).port}`);
+});
