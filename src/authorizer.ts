@@ -22,6 +22,7 @@ function authorize() {
 }
 
 async function requestToken(): Promise<string> {
+  console.log('reqiing');
   let result = await urllib.request('https://accounts.spotify.com/api/token', {
     method: 'POST',
     headers: {
@@ -37,6 +38,7 @@ async function requestToken(): Promise<string> {
   }
 
   let data = JSON.parse(result.data.toString())
+  console.log(data, data.access_token);
 
   expiration = new Date();
   expiration.setSeconds(expiration.getSeconds() + data.expires_in)

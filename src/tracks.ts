@@ -1,7 +1,9 @@
-import { Track } from "../src/Track";
+import { Tracklist } from "./Tracklist";
+import { token } from "../src/authorizer";
+import urllib from 'urllib';
+import { log } from './log';
 
-
-async function getTracks(artistId: string): Promise<Track[]> {
+async function getTracks(artistId: string): Promise<Tracklist> {
   let albums = await getAlbumIds(artistId);
   for (let album of albums) {
     let t = await getTracksFromAlbum(album);
@@ -16,7 +18,24 @@ async function getAlbumIds(artistId: string): Promise<string[]> {
 }
 
 async function getTracksFromAlbum(albumId: string): Promise<string[]> {
-  return [];
+	var result = await urllib.request(
+		`https://api.spotify.com/v1/albums/${albumId}/tracks?limit=50&market=PL`, {
+		method: 'GET',
+		headers: {
+			'Authorization': 'Bearer ' + await token()
+		},
+    // data: {
+    //   limit: 50, // TODO handle ridicolously large albums
+    //   market: 'PL'
+    // }
+	});
+	if (result.res.statusCode != 200) { // didn't succeed
+		log.error(`Getting tracks from album failed: ${result.res.statusCode}: ${result.res.statusMessage}. ${result.data.toString()}`);
+		throw new Error(result.res.statusCode?.toString());
+	}
+	var tracks = JSON.parse(result.data.toString()).items;
+  log.info(tracks);
+	return tracks;
 }
 
 // async function getTracksFromAlbum(userId, albumId, token=undefined) {
@@ -90,4 +109,4 @@ async function getTracksFromAlbum(albumId: string): Promise<string[]> {
 // 	return albums;
 // }
 
-export { getTracks }
+export { getTracks, getTracksFromAlbum }

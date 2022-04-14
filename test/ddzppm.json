@@ -1,0 +1,451 @@
+[
+    {
+        "artists": [
+            {
+                "external_urls": {
+                    "spotify": "https://open.spotify.com/artist/0Wi2fADbhwXlPUWxBmzo99"
+                },
+                "href": "https://api.spotify.com/v1/artists/0Wi2fADbhwXlPUWxBmzo99",
+                "id": "0Wi2fADbhwXlPUWxBmzo99",
+                "name": "Szpaku",
+                "type": "artist",
+                "uri": "spotify:artist:0Wi2fADbhwXlPUWxBmzo99"
+            },
+            {
+                "external_urls": {
+                    "spotify": "https://open.spotify.com/artist/0WDJa0qnagyOnMaiD26wht"
+                },
+                "href": "https://api.spotify.com/v1/artists/0WDJa0qnagyOnMaiD26wht",
+                "id": "0WDJa0qnagyOnMaiD26wht",
+                "name": "Kubi Producent",
+                "type": "artist",
+                "uri": "spotify:artist:0WDJa0qnagyOnMaiD26wht"
+            }
+        ],
+        "disc_number": 1,
+        "duration_ms": 189767,
+        "explicit": true,
+        "external_urls": {
+            "spotify": "https://open.spotify.com/track/6ZTYmNJgzHjJLuIXlhiOSY"
+        },
+        "href": "https://api.spotify.com/v1/tracks/6ZTYmNJgzHjJLuIXlhiOSY",
+        "id": "6ZTYmNJgzHjJLuIXlhiOSY",
+        "is_local": false,
+        "is_playable": true,
+        "name": "Mateusz",
+        "preview_url": null,
+        "track_number": 1,
+        "type": "track",
+        "uri": "spotify:track:6ZTYmNJgzHjJLuIXlhiOSY"
+    },
+    {
+        "artists": [
+            {
+                "external_urls": {
+                    "spotify": "https://open.spotify.com/artist/0Wi2fADbhwXlPUWxBmzo99"
+                },
+                "href": "https://api.spotify.com/v1/artists/0Wi2fADbhwXlPUWxBmzo99",
+                "id": "0Wi2fADbhwXlPUWxBmzo99",
+                "name": "Szpaku",
+                "type": "artist",
+                "uri": "spotify:artist:0Wi2fADbhwXlPUWxBmzo99"
+            },
+            {
+                "external_urls": {
+                    "spotify": "https://open.spotify.com/artist/00o5eWNk5MqreQLbngsikb"
+                },
+                "href": "https://api.spotify.com/v1/artists/00o5eWNk5MqreQLbngsikb",
+                "id": "00o5eWNk5MqreQLbngsikb",
+                "name": "Worek",
+                "type": "artist",
+                "uri": "spotify:artist:00o5eWNk5MqreQLbngsikb"
+            },
+            {
+                "external_urls": {
+                    "spotify": "https://open.spotify.com/artist/1oV1ajXGlrUCygNTDn8Ez4"
+                },
+                "href": "https://api.spotify.com/v1/artists/1oV1ajXGlrUCygNTDn8Ez4",
+                "id": "1oV1ajXGlrUCygNTDn8Ez4",
+                "name": "moody scrag",
+                "type": "artist",
+                "uri": "spotify:artist:1oV1ajXGlrUCygNTDn8Ez4"
+            }
+        ],
+        "disc_number": 1,
+        "duration_ms": 212571,
+        "explicit": true,
+        "external_urls": {
+            "spotify": "https://open.spotify.com/track/28h0ZFwYV84OffAbqVnbxy"
+        },
+        "href": "https://api.spotify.com/v1/tracks/28h0ZFwYV84OffAbqVnbxy",
+        "id": "28h0ZFwYV84OffAbqVnbxy",
+        "is_local": false,
+        "is_playable": true,
+        "name": "Krokodyl Dundee",
+        "preview_url": null,
+        "track_number": 2,
+        "type": "track",
+        "uri": "spotify:track:28h0ZFwYV84OffAbqVnbxy"
+    },
+    {
+        "artists": [
+            {
+                "external_urls": {
+                    "spotify": "https://open.spotify.com/artist/0Wi2fADbhwXlPUWxBmzo99"
+                },
+                "href": "https://api.spotify.com/v1/artists/0Wi2fADbhwXlPUWxBmzo99",
+                "id": "0Wi2fADbhwXlPUWxBmzo99",
+                "name": "Szpaku",
+                "type": "artist",
+                "uri": "spotify:artist:0Wi2fADbhwXlPUWxBmzo99"
+            },
+            {
+                "external_urls": {
+                    "spotify": "https://open.spotify.com/artist/58HrJf2URKRHTdaB28FcLh"
+                },
+                "href": "https://api.spotify.com/v1/artists/58HrJf2URKRHTdaB28FcLh",
+                "id": "58HrJf2URKRHTdaB28FcLh",
+                "name": "PSR",
+                "type": "artist",
+                "uri": "spotify:artist:58HrJf2URKRHTdaB28FcLh"
+            }
+        ],
+        "disc_number": 1,
+        "duration_ms": 187669,
+        "explicit": true,
+        "external_urls": {
+            "spotify": "https://open.spotify.com/track/16jEmtfWRH709yGmYNR4hf"
+        },
+        "href": "https://api.spotify.com/v1/tracks/16jEmtfWRH709yGmYNR4hf",
+        "id": "16jEmtfWRH709yGmYNR4hf",
+        "is_local": false,
+        "is_playable": true,
+        "name": "Jeździec Bez Głowy",
+        "preview_url": null,
+        "track_number": 3,
+        "type": "track",
+        "uri": "spotify:track:16jEmtfWRH709yGmYNR4hf"
+    },
+    {
+        "artists": [
+            {
+                "external_urls": {
+                    "spotify": "https://open.spotify.com/artist/0Wi2fADbhwXlPUWxBmzo99"
+                },
+                "href": "https://api.spotify.com/v1/artists/0Wi2fADbhwXlPUWxBmzo99",
+                "id": "0Wi2fADbhwXlPUWxBmzo99",
+                "name": "Szpaku",
+                "type": "artist",
+                "uri": "spotify:artist:0Wi2fADbhwXlPUWxBmzo99"
+            },
+            {
+                "external_urls": {
+                    "spotify": "https://open.spotify.com/artist/58HrJf2URKRHTdaB28FcLh"
+                },
+                "href": "https://api.spotify.com/v1/artists/58HrJf2URKRHTdaB28FcLh",
+                "id": "58HrJf2URKRHTdaB28FcLh",
+                "name": "PSR",
+                "type": "artist",
+                "uri": "spotify:artist:58HrJf2URKRHTdaB28FcLh"
+            }
+        ],
+        "disc_number": 1,
+        "duration_ms": 162857,
+        "explicit": true,
+        "external_urls": {
+            "spotify": "https://open.spotify.com/track/2JD2C6QTsIjogwoP1QRn6y"
+        },
+        "href": "https://api.spotify.com/v1/tracks/2JD2C6QTsIjogwoP1QRn6y",
+        "id": "2JD2C6QTsIjogwoP1QRn6y",
+        "is_local": false,
+        "is_playable": true,
+        "name": "Afryka",
+        "preview_url": null,
+        "track_number": 4,
+        "type": "track",
+        "uri": "spotify:track:2JD2C6QTsIjogwoP1QRn6y"
+    },
+    {
+        "artists": [
+            {
+                "external_urls": {
+                    "spotify": "https://open.spotify.com/artist/0Wi2fADbhwXlPUWxBmzo99"
+                },
+                "href": "https://api.spotify.com/v1/artists/0Wi2fADbhwXlPUWxBmzo99",
+                "id": "0Wi2fADbhwXlPUWxBmzo99",
+                "name": "Szpaku",
+                "type": "artist",
+                "uri": "spotify:artist:0Wi2fADbhwXlPUWxBmzo99"
+            },
+            {
+                "external_urls": {
+                    "spotify": "https://open.spotify.com/artist/0WDJa0qnagyOnMaiD26wht"
+                },
+                "href": "https://api.spotify.com/v1/artists/0WDJa0qnagyOnMaiD26wht",
+                "id": "0WDJa0qnagyOnMaiD26wht",
+                "name": "Kubi Producent",
+                "type": "artist",
+                "uri": "spotify:artist:0WDJa0qnagyOnMaiD26wht"
+            }
+        ],
+        "disc_number": 1,
+        "duration_ms": 203055,
+        "explicit": true,
+        "external_urls": {
+            "spotify": "https://open.spotify.com/track/7IQRoeohy7RPrjxflWsbkG"
+        },
+        "href": "https://api.spotify.com/v1/tracks/7IQRoeohy7RPrjxflWsbkG",
+        "id": "7IQRoeohy7RPrjxflWsbkG",
+        "is_local": false,
+        "is_playable": true,
+        "name": "Mr. Mime",
+        "preview_url": null,
+        "track_number": 5,
+        "type": "track",
+        "uri": "spotify:track:7IQRoeohy7RPrjxflWsbkG"
+    },
+    {
+        "artists": [
+            {
+                "external_urls": {
+                    "spotify": "https://open.spotify.com/artist/0Wi2fADbhwXlPUWxBmzo99"
+                },
+                "href": "https://api.spotify.com/v1/artists/0Wi2fADbhwXlPUWxBmzo99",
+                "id": "0Wi2fADbhwXlPUWxBmzo99",
+                "name": "Szpaku",
+                "type": "artist",
+                "uri": "spotify:artist:0Wi2fADbhwXlPUWxBmzo99"
+            },
+            {
+                "external_urls": {
+                    "spotify": "https://open.spotify.com/artist/58HrJf2URKRHTdaB28FcLh"
+                },
+                "href": "https://api.spotify.com/v1/artists/58HrJf2URKRHTdaB28FcLh",
+                "id": "58HrJf2URKRHTdaB28FcLh",
+                "name": "PSR",
+                "type": "artist",
+                "uri": "spotify:artist:58HrJf2URKRHTdaB28FcLh"
+            }
+        ],
+        "disc_number": 1,
+        "duration_ms": 185208,
+        "explicit": true,
+        "external_urls": {
+            "spotify": "https://open.spotify.com/track/2nZNHTvbMaIBS194W8c7iT"
+        },
+        "href": "https://api.spotify.com/v1/tracks/2nZNHTvbMaIBS194W8c7iT",
+        "id": "2nZNHTvbMaIBS194W8c7iT",
+        "is_local": false,
+        "is_playable": true,
+        "name": "Dom",
+        "preview_url": null,
+        "track_number": 6,
+        "type": "track",
+        "uri": "spotify:track:2nZNHTvbMaIBS194W8c7iT"
+    },
+    {
+        "artists": [
+            {
+                "external_urls": {
+                    "spotify": "https://open.spotify.com/artist/0Wi2fADbhwXlPUWxBmzo99"
+                },
+                "href": "https://api.spotify.com/v1/artists/0Wi2fADbhwXlPUWxBmzo99",
+                "id": "0Wi2fADbhwXlPUWxBmzo99",
+                "name": "Szpaku",
+                "type": "artist",
+                "uri": "spotify:artist:0Wi2fADbhwXlPUWxBmzo99"
+            },
+            {
+                "external_urls": {
+                    "spotify": "https://open.spotify.com/artist/58HrJf2URKRHTdaB28FcLh"
+                },
+                "href": "https://api.spotify.com/v1/artists/58HrJf2URKRHTdaB28FcLh",
+                "id": "58HrJf2URKRHTdaB28FcLh",
+                "name": "PSR",
+                "type": "artist",
+                "uri": "spotify:artist:58HrJf2URKRHTdaB28FcLh"
+            }
+        ],
+        "disc_number": 1,
+        "duration_ms": 196769,
+        "explicit": true,
+        "external_urls": {
+            "spotify": "https://open.spotify.com/track/2KWldP20Mp9fT87aZOFP7J"
+        },
+        "href": "https://api.spotify.com/v1/tracks/2KWldP20Mp9fT87aZOFP7J",
+        "id": "2KWldP20Mp9fT87aZOFP7J",
+        "is_local": false,
+        "is_playable": true,
+        "name": "Ötzi",
+        "preview_url": null,
+        "track_number": 7,
+        "type": "track",
+        "uri": "spotify:track:2KWldP20Mp9fT87aZOFP7J"
+    },
+    {
+        "artists": [
+            {
+                "external_urls": {
+                    "spotify": "https://open.spotify.com/artist/0Wi2fADbhwXlPUWxBmzo99"
+                },
+                "href": "https://api.spotify.com/v1/artists/0Wi2fADbhwXlPUWxBmzo99",
+                "id": "0Wi2fADbhwXlPUWxBmzo99",
+                "name": "Szpaku",
+                "type": "artist",
+                "uri": "spotify:artist:0Wi2fADbhwXlPUWxBmzo99"
+            },
+            {
+                "external_urls": {
+                    "spotify": "https://open.spotify.com/artist/5bjlaptdRxdTCicOIX7k2P"
+                },
+                "href": "https://api.spotify.com/v1/artists/5bjlaptdRxdTCicOIX7k2P",
+                "id": "5bjlaptdRxdTCicOIX7k2P",
+                "name": "LEEO",
+                "type": "artist",
+                "uri": "spotify:artist:5bjlaptdRxdTCicOIX7k2P"
+            }
+        ],
+        "disc_number": 1,
+        "duration_ms": 184761,
+        "explicit": true,
+        "external_urls": {
+            "spotify": "https://open.spotify.com/track/6D5keZsDGF0r5q4Nj73KAZ"
+        },
+        "href": "https://api.spotify.com/v1/tracks/6D5keZsDGF0r5q4Nj73KAZ",
+        "id": "6D5keZsDGF0r5q4Nj73KAZ",
+        "is_local": false,
+        "is_playable": true,
+        "name": "Człowiek Motyl",
+        "preview_url": null,
+        "track_number": 8,
+        "type": "track",
+        "uri": "spotify:track:6D5keZsDGF0r5q4Nj73KAZ"
+    },
+    {
+        "artists": [
+            {
+                "external_urls": {
+                    "spotify": "https://open.spotify.com/artist/0Wi2fADbhwXlPUWxBmzo99"
+                },
+                "href": "https://api.spotify.com/v1/artists/0Wi2fADbhwXlPUWxBmzo99",
+                "id": "0Wi2fADbhwXlPUWxBmzo99",
+                "name": "Szpaku",
+                "type": "artist",
+                "uri": "spotify:artist:0Wi2fADbhwXlPUWxBmzo99"
+            },
+            {
+                "external_urls": {
+                    "spotify": "https://open.spotify.com/artist/00o5eWNk5MqreQLbngsikb"
+                },
+                "href": "https://api.spotify.com/v1/artists/00o5eWNk5MqreQLbngsikb",
+                "id": "00o5eWNk5MqreQLbngsikb",
+                "name": "Worek",
+                "type": "artist",
+                "uri": "spotify:artist:00o5eWNk5MqreQLbngsikb"
+            },
+            {
+                "external_urls": {
+                    "spotify": "https://open.spotify.com/artist/0suD5l3wWM0EdjkhrBfUxk"
+                },
+                "href": "https://api.spotify.com/v1/artists/0suD5l3wWM0EdjkhrBfUxk",
+                "id": "0suD5l3wWM0EdjkhrBfUxk",
+                "name": "Swizzy",
+                "type": "artist",
+                "uri": "spotify:artist:0suD5l3wWM0EdjkhrBfUxk"
+            }
+        ],
+        "disc_number": 1,
+        "duration_ms": 171188,
+        "explicit": true,
+        "external_urls": {
+            "spotify": "https://open.spotify.com/track/50ASAzQzkHAZ4oZ9SQRPjQ"
+        },
+        "href": "https://api.spotify.com/v1/tracks/50ASAzQzkHAZ4oZ9SQRPjQ",
+        "id": "50ASAzQzkHAZ4oZ9SQRPjQ",
+        "is_local": false,
+        "is_playable": true,
+        "name": "Alf",
+        "preview_url": null,
+        "track_number": 9,
+        "type": "track",
+        "uri": "spotify:track:50ASAzQzkHAZ4oZ9SQRPjQ"
+    },
+    {
+        "artists": [
+            {
+                "external_urls": {
+                    "spotify": "https://open.spotify.com/artist/0Wi2fADbhwXlPUWxBmzo99"
+                },
+                "href": "https://api.spotify.com/v1/artists/0Wi2fADbhwXlPUWxBmzo99",
+                "id": "0Wi2fADbhwXlPUWxBmzo99",
+                "name": "Szpaku",
+                "type": "artist",
+                "uri": "spotify:artist:0Wi2fADbhwXlPUWxBmzo99"
+            },
+            {
+                "external_urls": {
+                    "spotify": "https://open.spotify.com/artist/4nRJJWVfbPAULHZl7VYVE8"
+                },
+                "href": "https://api.spotify.com/v1/artists/4nRJJWVfbPAULHZl7VYVE8",
+                "id": "4nRJJWVfbPAULHZl7VYVE8",
+                "name": "OLEK",
+                "type": "artist",
+                "uri": "spotify:artist:4nRJJWVfbPAULHZl7VYVE8"
+            }
+        ],
+        "disc_number": 1,
+        "duration_ms": 158571,
+        "explicit": true,
+        "external_urls": {
+            "spotify": "https://open.spotify.com/track/5qsmfqG6u9ajbJMyH1bw08"
+        },
+        "href": "https://api.spotify.com/v1/tracks/5qsmfqG6u9ajbJMyH1bw08",
+        "id": "5qsmfqG6u9ajbJMyH1bw08",
+        "is_local": false,
+        "is_playable": true,
+        "name": "R.I.P. Krawczyk",
+        "preview_url": null,
+        "track_number": 10,
+        "type": "track",
+        "uri": "spotify:track:5qsmfqG6u9ajbJMyH1bw08"
+    },
+    {
+        "artists": [
+            {
+                "external_urls": {
+                    "spotify": "https://open.spotify.com/artist/0Wi2fADbhwXlPUWxBmzo99"
+                },
+                "href": "https://api.spotify.com/v1/artists/0Wi2fADbhwXlPUWxBmzo99",
+                "id": "0Wi2fADbhwXlPUWxBmzo99",
+                "name": "Szpaku",
+                "type": "artist",
+                "uri": "spotify:artist:0Wi2fADbhwXlPUWxBmzo99"
+            },
+            {
+                "external_urls": {
+                    "spotify": "https://open.spotify.com/artist/5GvwPBszaFVYwZS9eMX6vX"
+                },
+                "href": "https://api.spotify.com/v1/artists/5GvwPBszaFVYwZS9eMX6vX",
+                "id": "5GvwPBszaFVYwZS9eMX6vX",
+                "name": "Quiz",
+                "type": "artist",
+                "uri": "spotify:artist:5GvwPBszaFVYwZS9eMX6vX"
+            }
+        ],
+        "disc_number": 1,
+        "duration_ms": 158117,
+        "explicit": true,
+        "external_urls": {
+            "spotify": "https://open.spotify.com/track/4sNqUUe7HSxkD0ZYobXlWz"
+        },
+        "href": "https://api.spotify.com/v1/tracks/4sNqUUe7HSxkD0ZYobXlWz",
+        "id": "4sNqUUe7HSxkD0ZYobXlWz",
+        "is_local": false,
+        "is_playable": true,
+        "name": "Minimini2",
+        "preview_url": null,
+        "track_number": 11,
+        "type": "track",
+        "uri": "spotify:track:4sNqUUe7HSxkD0ZYobXlWz"
+    }
+]
