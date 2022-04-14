@@ -5,24 +5,12 @@
   </head>
   
   <body>
-    <div id="graph"></div>
-  
-    <script>
-      // Random tree
-      const N = 300;
-      const gData = {
-        nodes: [...Array(N).keys()].map(i => ({ id: i })),
-        links: [...Array(N).keys()]
-          .filter(id => id)
-          .map(id => ({
-            source: id,
-            target: Math.round(Math.random() * (id-1))
-          }))
-      };
-  
-      const Graph = ForceGraph()
-        (document.getElementById('graph'))
-          .linkDirectionalParticles(2)
-          .graphData(gData);
-    </script>
+    <form action="/featmap" method="get">
+      <p>
+        <input type="text" name="mgng">
+      </p>
+      <p>
+        <input type="submit">
+      </p>
+    </form>
   </body>

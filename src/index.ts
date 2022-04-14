@@ -12,6 +12,7 @@ const app = express();
 const session = require('express-session');
 const useragent = require('express-useragent');
 const log: Logger = require('./log');
+import fs from 'fs';
 
 log.info('Booting up... ', Date());
 
@@ -41,6 +42,18 @@ app.get('/text', (req: Request, res: Response)=> {
 
 app.get('/art', (req: Request, res: Response)=> {
   res.sendFile(`${__dirname}/views/art.html`);
+});
+
+app.get('/featmap', (req: Request, res: Response)=> {
+  let obj = {
+    bruh: "yeet",
+    masno: "gang"
+  }
+  let s = JSON.stringify(obj);
+
+  fs.writeFile('data/bruh.txt', 'sfa', ()=>{});
+
+  res.send(s);
 });
 
 // Start the server
