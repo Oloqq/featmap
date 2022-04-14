@@ -39,6 +39,10 @@ app.get('/text', (req: Request, res: Response)=> {
   res.sendFile(`${__dirname}/views/text.html`);
 });
 
+app.get('/art', (req: Request, res: Response)=> {
+  res.sendFile(`${__dirname}/views/art.html`);
+});
+
 // Start the server
 var listener = app.listen(process.env.PORT, () => {
   log.info(`App is listening on port ${(listener.address() as AddressInfo).port}`);
