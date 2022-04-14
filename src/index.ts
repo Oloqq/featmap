@@ -28,30 +28,15 @@ app.use(session({
 
 // Routing
 app.get('/', (req: Request, res: Response)=> {
-  // if (req.session && !req.session.userid) {    
-  //   res.sendFile(`${__dirname}/views/login.html`);
-  // } else {
-  //   if (req.useragent && req.useragent.isMobile) {
-  //     res.sendFile(`${__dirname}/views/index-mobile.html`);
-  //   } else {
-  //     res.sendFile(`${__dirname}/views/index.html`);
-  //   }
-  // }
+  res.sendFile(`${__dirname}/views/index.html`);
 });
 
-app.get('/following', (req: Request, res: Response) => {
-  // if (req.session &&  !req.session.userid) {
-  //   res.send({
-  //     status: 'error',
-  //     message: 'no session'
-  //   });
-  //   return;
-  // } else {
-  //   spotifuncs.getFollowing(req.session && req.session.userid)
-  //   .then((result: any)=>{
-  //     res.send(result);
-  //   });
-  // }
+app.get('/json', (req: Request, res: Response)=> {
+  res.sendFile(`${__dirname}/views/json.html`);
+});
+
+app.get('/text', (req: Request, res: Response)=> {
+  res.sendFile(`${__dirname}/views/text.html`);
 });
 
 // Start the server
