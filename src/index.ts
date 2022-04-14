@@ -7,11 +7,10 @@ import { Request, Response } from "express";
 // Dependecies
 import express from 'express';
 import { AddressInfo } from "net";
-import { Logger } from "../types/log";
 const app = express();
 const session = require('express-session');
 const useragent = require('express-useragent');
-const log: Logger = require('./log');
+import { log } from './log';
 import fs from 'fs';
 
 log.info('Booting up... ', Date());
@@ -62,3 +61,6 @@ app.get('/featmap', (req: Request, res: Response)=> {
 var listener = app.listen(process.env.PORT, () => {
   log.info(`App is listening on port ${(listener.address() as AddressInfo).port}`);
 });
+
+// import { token } from "../src/authorizer";
+// token()

@@ -1,4 +1,3 @@
-// import { Options } from '../src/Classes/Options/Options'; // this will be your custom import
 import { extractId } from '../src/artistId';
 import { expect } from 'chai';
 

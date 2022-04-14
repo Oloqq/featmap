@@ -25,12 +25,15 @@
   "dependencies": {
     "@types/express-session": "^1.17.4",
     "@types/express-useragent": "^1.0.2",
+    "@types/urllib": "^2.33.0",
     "dotenv": "^16.0.0",
     "express": "^4.17.3",
     "express-session": "^1.17.2",
     "express-useragent": "^1.0.15",
     "fs": "0.0.1-security",
+    "js-base64": "^3.7.2",
     "log": "^6.3.1",
-    "simple-node-logger": "^21.8.12"
+    "simple-node-logger": "^21.8.12",
+    "urllib": "^2.38.0"
   }
 }
