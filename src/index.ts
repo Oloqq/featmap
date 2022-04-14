@@ -45,13 +45,15 @@ app.get('/art', (req: Request, res: Response)=> {
 });
 
 app.get('/featmap', (req: Request, res: Response)=> {
-  let obj = {
-    bruh: "yeet",
-    masno: "gang"
-  }
-  let s = JSON.stringify(obj);
+  let s = req.query['artist'];
+  console.log(s);
+  // let obj = {
+  //   bruh: "yeet",
+  //   masno: "gang"
+  // }
+  // let s = JSON.stringify(obj);
 
-  fs.writeFile('data/bruh.txt', 'sfa', ()=>{});
+  // fs.writeFile('data/bruh.txt', 'sfa', ()=>{});
 
   res.send(s);
 });
