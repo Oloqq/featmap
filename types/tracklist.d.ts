@@ -4,4 +4,15 @@ interface TrackDict {
 
 type Artist = string;
 
-export {TrackDict, Artist}
+type NodeEntry = {
+  id: string,
+  size: number
+}
+
+type LinkEntry = {
+  source: string,
+  target: string,
+  size: number
+}
+
+export {TrackDict, Artist, LinkEntry, NodeEntry}

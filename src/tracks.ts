@@ -1,16 +1,16 @@
-import { Tracklist } from "./Tracklist";
+import { Collaborations } from "./Tracklist";
 import { token } from "../src/authorizer";
 import urllib from 'urllib';
 import { log } from './log';
 
-async function getTracks(artistId: string): Promise<Tracklist> {
+async function getTracks(artistId: string): Promise<Collaborations> {
   let albums = await getAlbumIds(artistId);
   for (let album of albums) {
     let t = await getTracksFromAlbum(album);
     // tracks = tracks.concat(t);
   }
   
-  return new Tracklist();
+  return new Collaborations();
 }
 
 async function getAlbumIds(artistId: string): Promise<string[]> {

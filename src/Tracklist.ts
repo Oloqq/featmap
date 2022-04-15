@@ -1,7 +1,7 @@
-import { TrackDict, Artist } from "../types/tracklist";
+import { TrackDict, Artist, LinkEntry, NodeEntry } from "../types/tracklist";
 const fs = require('fs');
 
-class AlbumContent {
+class AlbumTracksFromJSON {
   constructor(path: string) {
     let rawdata = fs.readFileSync(path);
     this.content = JSON.parse(rawdata);
@@ -10,38 +10,38 @@ class AlbumContent {
   content: any;
 }
 
-class Track {
-  name: string;
-  artists: Artist[] = [];
+class Collaborations {
+  root: string;
+  feats: Map<string, string[]> = new Map();
 
-  constructor(data: any) {
-    this.name = data.name;
-    this.artists = data.artists.map((artist: any) => { artist.name })
-  }
-}
-
-class Tracklist {
-  tracks: TrackDict = {};
-
-  constructor() {
+  constructor(author: string) {
+    this.root = author;
   }
 
-  add(tracks: AlbumContent) {
+  parseAlbum(tracks: AlbumTracksFromJSON) {
     tracks.content.forEach((raw_track: any) => {
-      let id = raw_track.id;
-      if (!(id in tracks)) {
-        let track = new Track(raw_track);
-
-        this.tracks[id] = track;
-      }
+      let name: string = raw_track.name;
+      this.feats.set(name, raw_track.artists
+        .map((artist: any) => { artist.name })
+        .filter((artist: string) => { return artist !== this.root })
+      );
     });
+  }
+
+  resolve(
+    current: Set<string>,
+    next: Set<string>, 
+    closed: Set<string>,
+    nodes: NodeEntry[],
+    links: LinkEntry[]) {
+
   }
 
   // NOTE zeby sie pozbyc producentow na featach mozna by patrzec czy ktorys z wykonawcow nie jest wpisany jako producent
   // TODO check if song is unique by checking name and artists
   getTrackNum(): number {
-    return Object.keys(this.tracks).length;
+    return this.feats.size;
   }
 }
 
-export { Tracklist, AlbumContent }
+export { Collaborations, AlbumTracksFromJSON }
