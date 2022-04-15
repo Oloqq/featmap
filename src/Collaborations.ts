@@ -7,29 +7,38 @@ only the first intro will be checked
 */
 
 class Collaborations {
-  readonly root: string;
-  feats: Map<string, string[]> = new Map();
+  readonly root: Artist;
+  feats: Map<string, Artist[]> = new Map(); // song to artists
 
-  constructor(author: string) {
+  constructor(author: Artist) {
     this.root = author;
   }
 
-  static fillLastLayer(nodes: NodeEntry[], layer: Set<string>, layerN: number = 0) {
-    layer.forEach((node) => {
-      nodes.push({
-        id: node,
-        size: 1, // currently treating all artists equally
-        layer: layerN
-      });
-    });
+  static fillLastLayer(
+    nodes: NodeEntry[],
+    layer: Set<string>,
+    layerN: number = 0,
+    artistLookup: Map<string, Artist>) 
+  {
+    console.log(layer)
+    throw 'bruh';
+    // layer.forEach((id) => {
+    //   nodes.push({
+    //     id: artistLookup.get(id)?.name,
+    //     size: 1, // currently treating all artists equally
+    //     layer: layerN
+    //   });
+    // });
   }
 
   parseAlbum(tracks: Track[]) {
     tracks.forEach((raw_track: any) => {
       let track_name: string = raw_track.name;
       this.feats.set(track_name, raw_track.artists
-        .map((artist: any) => artist.name)
-        .filter((artist: string) => { return artist !== this.root }));
+        .map((artist: Artist) => {
+          return {name: artist.name, id: artist.id}
+        })
+        .filter((artist: Artist) => { return artist.id !== this.root.id }));
     });
   }
 
@@ -39,37 +48,38 @@ class Collaborations {
     closed: Set<string>,
     nodes: NodeEntry[],
     links: LinkEntry[],
-    layer: number = 1)
+    layer: number = 1,
+    artistLookup: Map<string, Artist>)
   {
-    current.delete(this.root);
-    closed.add(this.root);
+    current.delete(this.root.id);
+    closed.add(this.root.id);
     nodes.push({
-      id: this.root,
+      id: this.root.id,
       size: 1, // currently treating all artists equally
       layer
     });
 
     let collaborators: Map<string, number> = new Map();
 
-    this.feats.forEach((feats: string[], _name: string) => {
+    this.feats.forEach((feats: Artist[], _name: string) => {
       feats.forEach((artist) => {
-        if (closed.has(artist)) return;
+        if (closed.has(artist.id)) return;
 
-        if (!collaborators.has(artist)) {
-          collaborators.set(artist, 1);
-          if (!current.has(artist)) {
-            next.add(artist);
+        if (!collaborators.has(artist.id)) {
+          collaborators.set(artist.id, 1);
+          if (!current.has(artist.id)) {
+            next.add(artist.id);
           }
         } else {
-          collaborators.set(artist, collaborators.get(artist)! + 1)
+          collaborators.set(artist.id, collaborators.get(artist.name)! + 1)
         }
       })  
     })
 
     collaborators.forEach((size, colleague) => {
       links.push({
-        source: this.root,
-        target: colleague,
+        source: this.root.name,
+        target: colleague, //FIXME use lookup
         size
       })
     })

@@ -1,13 +1,14 @@
 import { Spotify } from "./Spotify";
+import { Track, Artist } from "../types/spotify";
 import { Collaborations } from "../src/Collaborations";
 import { LinkEntry, NodeEntry, GraphData } from '../types/graph';
 import { log } from './log';
 
 class Grapher {
   spotify: Spotify
-  current: Set<string> = new Set()
-  next:    Set<string> = new Set()
-  closed:  Set<string> = new Set()
+  current: Set<Artist> = new Set()
+  next:    Set<Artist> = new Set()
+  closed:  Set<Artist> = new Set()
   nodes: NodeEntry[] = []
   links: LinkEntry[] = []
   layer: number = 1
@@ -29,13 +30,8 @@ class Grapher {
       }
       await new Promise(r => setTimeout(r, 100));
     }
-    // log.info(collab.getTrackNum().toString());
-    // let closed = new Set<string>([]);
-    // let current = new Set<string>([name]);
-    // let next = new Set<string>([]);
-    // let nodes: NodeEntry[] = [];
-    // let links: LinkEntry[] = [];
     collab.resolve(this.current, this.next, this.closed, this.nodes, this.links);
+    
     Collaborations.fillLastLayer(this.nodes, this.next, 2);
     return {
       nodes: this.nodes,
@@ -43,14 +39,7 @@ class Grapher {
     }
   }
 
-  private async goThroughArtist(id: string,
-    current: Set<string>,
-    next: Set<string>, 
-    closed: Set<string>,
-    nodes: NodeEntry[],
-    links: LinkEntry[],
-    layer: number = 1)
-  {
+  private async goThroughArtist(id: string) {
 
   }
 }
