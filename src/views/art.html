@@ -8,13 +8,13 @@
     <div id="graph"></div>
   
     <script>
-        fetch('artists.json').then(res => res.json()).then(data => {
+        fetch('ddzppm.json').then(res => res.json()).then(data => {
           const Graph = ForceGraph()
           (document.getElementById('graph'))
             .graphData(data)
             .nodeId('id')
             .nodeAutoColorBy('group')
-            .linkWidth('val')
+            // .linkWidth('val')
             .nodeCanvasObject((node, ctx, globalScale) => {
               const label = node.id;
               const fontSize = 20/globalScale;

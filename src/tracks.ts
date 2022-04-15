@@ -10,7 +10,7 @@ async function getTracks(artistId: string): Promise<Collaborations> {
     // tracks = tracks.concat(t);
   }
   
-  return new Collaborations();
+  return new Collaborations('');
 }
 
 async function getAlbumIds(artistId: string): Promise<string[]> {

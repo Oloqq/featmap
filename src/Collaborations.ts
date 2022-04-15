@@ -1,5 +1,5 @@
-import { TrackDict, Artist, LinkEntry, NodeEntry } from "../types/tracklist";
-const fs = require('fs');
+import { LinkEntry, NodeEntry } from "../types/tracklist";
+import fs from 'fs';
 
 /*
 FIXME if artist has several tracks with the same name (e.g. Intro)
@@ -8,7 +8,7 @@ only the first intro will be checked
 class AlbumTracksFromJSON {
   constructor(path: string) {
     let rawdata = fs.readFileSync(path);
-    this.content = JSON.parse(rawdata);
+    this.content = JSON.parse(rawdata.toString());
   }
 
   content: any;
@@ -20,6 +20,16 @@ class Collaborations {
 
   constructor(author: string) {
     this.root = author;
+  }
+
+  static fillLastLayer(nodes: NodeEntry[], layer: Set<string>, layerN: number) {
+    layer.forEach((node) => {
+      nodes.push({
+        id: node,
+        size: 1, // currently treating all artists equally
+        layer: layerN
+      });
+    });
   }
 
   parseAlbum(tracks: AlbumTracksFromJSON) {
@@ -36,13 +46,15 @@ class Collaborations {
     next: Set<string>, 
     closed: Set<string>,
     nodes: NodeEntry[],
-    links: LinkEntry[]) 
+    links: LinkEntry[],
+    layer: number = 1)
   {
     current.delete(this.root);
     closed.add(this.root);
     nodes.push({
       id: this.root,
-      size: 1 // currently treating all artists equally
+      size: 1, // currently treating all artists equally
+      layer
     });
 
     let collaborators: Map<string, number> = new Map();
@@ -77,5 +89,26 @@ class Collaborations {
     return this.feats.size;
   }
 }
+
+const author = 'Szpaku';
+const album = new AlbumTracksFromJSON('test/ddzppm.json');
+const albumSize = 11;
+
+let closed = new Set<string>(['Kubi Producent']);
+let current = new Set<string>(['Szpaku']);
+let next = new Set<string>(['Worek']);
+let nodes: NodeEntry[] = [];
+let links: LinkEntry[] = [];
+
+let t = new Collaborations(author);
+t.parseAlbum(album);
+
+t.resolve(current, next, closed, nodes, links, 1);
+
+current = next;
+Collaborations.fillLastLayer(nodes, current, 2);
+fs.writeFileSync('public/ddzppm.json', JSON.stringify({
+  nodes, links
+}))
 
 export { Collaborations, AlbumTracksFromJSON }

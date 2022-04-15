@@ -65,6 +65,16 @@ describe('Tracklist', () => {
     })
   })
 
+  it('fills the last layer of feats', () => {
+    let c = new Collaborations(author);
+    c.parseAlbum(album);
+    c.feats.forEach((feats: string[], name: string) => {
+      expect(feats).not.to.contain(author);
+    })
+  })
+
+
+
   // it('stops the search after reaching specified distance from root', () => {
   // })
 });
