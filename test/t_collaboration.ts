@@ -85,7 +85,7 @@ describe('Tracklist', () => {
     let t = new Collaborations(Szpaku);
     t.parseAlbum(album);
 
-    t.resolve(current, next, closed, nodes, links, 1, artistLookup);
+    t.resolve(current, next, closed, nodes, links, 1);
 
     expect(closed).to.contain(Szpaku.id).and.contain(Kubi.id);
     expect(current).to.contain(PSR.id).and.have.lengthOf(1);
@@ -103,7 +103,7 @@ describe('Tracklist', () => {
     let t = new Collaborations(Szpaku);
     t.parseAlbum(album);
 
-    t.resolve(current, next, closed, nodes, links, 1, artistLookup);
+    t.resolve(current, next, closed, nodes, links, 1);
 
     expect(nodes).have.lengthOf(1);
     expect(links).have.lengthOf(7); // Kubi is already closed, so 7
@@ -127,8 +127,8 @@ describe('Tracklist', () => {
     let t = new Collaborations(Szpaku);
     t.parseAlbum(album);
 
-    t.resolve(current, next, closed, nodes, links, 1, artistLookup);
-    Collaborations.fillLastLayer(nodes, next, 2, artistLookup);
+    t.resolve(current, next, closed, nodes, links, 1);
+    Collaborations.fillLastLayer(nodes, next, 2);
 
     expect(nodes).have.lengthOf(9);
     expect(links).have.lengthOf(8);
