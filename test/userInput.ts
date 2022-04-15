@@ -1,4 +1,4 @@
-import { extractId } from '../src/artistId';
+import { extractId } from '../src/extractId';
 import { expect } from 'chai';
 
 describe('Extracting artist id', () => {

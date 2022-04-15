@@ -8,12 +8,12 @@
     <div id="graph"></div>
   
     <script>
-        fetch('ddzppm.json').then(res => res.json()).then(data => {
+        fetch('szpaku.json').then(res => res.json()).then(data => {
           const Graph = ForceGraph()
           (document.getElementById('graph'))
             .graphData(data)
             .nodeId('id')
-            .nodeAutoColorBy('group')
+            .nodeAutoColorBy('layer')
             .linkWidth('size')
             .nodeCanvasObject((node, ctx, globalScale) => {
               const label = node.id;

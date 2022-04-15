@@ -5,13 +5,16 @@ if (process.env.NODE_ENV !== 'production') {
 import { log } from './log';
 import { Request, Response } from "express";
 import express from 'express';
+import { AddressInfo } from "net";
+import { Spotify } from "../src/Spotify";
+import { extractId } from '../src/extractId';
+import { AlbumTracksFromJSON, Collaborations } from "../src/Collaborations";
+import { LinkEntry, NodeEntry } from '../types/tracklist';
+
 const app = express();
 const session = require('express-session');
 const useragent = require('express-useragent');
 
-import { AddressInfo } from "net";
-
-import { Spotify } from "../src/Spotify";
 if (!process.env.SPOTIFY_ID || !process.env.SPOTIFY_SECRET) {
   throw new Error('Missing SPOTIFY_ID or SPOTIFY_SECRET environement variable');
 }
@@ -48,20 +51,46 @@ app.get('/art', (req: Request, res: Response)=> {
 });
 
 app.get('/featmap', (req: Request, res: Response)=> {
-  let s = req.query['artist'];
-  console.log(s);
-  // let obj = {
-  //   bruh: "yeet",
-  //   masno: "gang"
-  // }
-  // let s = JSON.stringify(obj);
+  let input_id = req.query['artist'];
+  if (input_id) {
+    input_id = input_id.toString();
+    let id = extractId.fromAny(input_id);
 
-  // fs.writeFile('data/bruh.txt', 'sfa', ()=>{});
-
-  res.send(s);
+    spotify.getAlbumsOfArtist(id)
+    .then(async (albums) => {
+      let collab = new Collaborations("Szpaku");
+      log.info(albums)
+      for (let album of albums) {
+        try {
+          let tracks = await spotify.getTracksFromAlbum(album.id)
+          collab.parseAlbum(new AlbumTracksFromJSON('', tracks));
+        } catch (APIError) {
+          console.log(`oops ${album.id}`);
+        }
+        await new Promise(r => setTimeout(r, 250));
+      }
+      log.info(collab.getTrackNum().toString());
+      let closed = new Set<string>([]);
+      let current = new Set<string>(['Szpaku']);
+      let next = new Set<string>([]);
+      let nodes: NodeEntry[] = [];
+      let links: LinkEntry[] = [];
+      collab.resolve(current, next, closed, nodes, links);
+      Collaborations.fillLastLayer(nodes, next, 2);
+      res.send(JSON.stringify({
+        nodes: nodes,
+        links: links
+      }));
+    })
+  }
 });
 
 // Start the server
 var listener = app.listen(process.env.PORT, () => {
   log.info(`App is listening on port ${(listener.address() as AddressInfo).port}`);
 });
+
+(async () => {
+  log.info('bruh');
+  log.info(await spotify.getTracksFromAlbum('7nySql4UFcZP60opHqnAMv'));
+})();

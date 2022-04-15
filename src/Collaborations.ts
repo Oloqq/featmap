@@ -6,9 +6,13 @@ FIXME if artist has several tracks with the same name (e.g. Intro)
 only the first intro will be checked
 */
 class AlbumTracksFromJSON {
-  constructor(path: string) {
-    let rawdata = fs.readFileSync(path);
-    this.content = JSON.parse(rawdata.toString());
+  constructor(path: string, data?: string) {
+    if (data) {
+      this.content = data;
+    } else {
+      let rawdata = fs.readFileSync(path);
+      this.content = JSON.parse(rawdata.toString());
+    }
   }
 
   content: any;
