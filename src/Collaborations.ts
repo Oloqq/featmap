@@ -14,16 +14,16 @@ class Collaborations {
     this.root = author;
   }
 
+  static artistLookup: Map<string, Artist> = new Map();
+
   static fillLastLayer(
     nodes: NodeEntry[],
     layer: Set<string>,
-    layerN: number = 0,
-    artistLookup: Map<string, Artist>) 
+    layerN: number = 0) 
   {
     layer.forEach((id) => {
-      console.log(id)
       nodes.push({
-        id: artistLookup.get(id)!.name,
+        id: Collaborations.artistLookup.get(id)!.name,
         size: 1, // currently treating all artists equally
         layer: layerN
       });
@@ -35,7 +35,9 @@ class Collaborations {
       let track_name: string = raw_track.name;
       this.feats.set(track_name, raw_track.artists
         .map((artist: Artist) => {
-          return {name: artist.name, id: artist.id}
+          let created =  {name: artist.name, id: artist.id}
+          Collaborations.artistLookup.set(created.id, created)
+          return created;
         })
         .filter((artist: Artist) => { return artist.id !== this.root.id }));
     });
@@ -47,13 +49,12 @@ class Collaborations {
     closed: Set<string>,
     nodes: NodeEntry[],
     links: LinkEntry[],
-    layer: number = 1,
-    artistLookup: Map<string, Artist>)
+    layer: number = 1)
   {
     current.delete(this.root.id);
     closed.add(this.root.id);
     nodes.push({
-      id: this.root.id,
+      id: this.root.name,
       size: 1, // currently treating all artists equally
       layer
     });
@@ -78,7 +79,7 @@ class Collaborations {
     collaborators.forEach((size, colleague) => {
       links.push({
         source: this.root.name,
-        target: colleague, //FIXME use lookup
+        target: Collaborations.artistLookup.get(colleague)!.name,
         size
       })
     })

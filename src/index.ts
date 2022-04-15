@@ -41,7 +41,6 @@ app.set('views', path.join(__dirname, './views'))
 app.get('/tmp', (req: Request, res: Response) => {
   // res.render('graph', {data: JSON.stringify({a: 2})});
   let data = JSON.stringify(JSON.parse(fs.readFileSync("public/szpaku.json").toString()));
-  console.log(data)
   res.render('graph', {data});
 });
 

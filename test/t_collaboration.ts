@@ -49,10 +49,6 @@ artistLookup.set("1oV1ajXGlrUCygNTDn8Ez4", {
 
 
 
-console.log(artistLookup);
-
-
-
 
 const album = JSON.parse(fs.readFileSync('test/ddzppm.json').toString());
 const albumSize = 11;

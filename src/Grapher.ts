@@ -6,9 +6,9 @@ import { log } from './log';
 
 class Grapher {
   spotify: Spotify
-  current: Set<Artist> = new Set()
-  next:    Set<Artist> = new Set()
-  closed:  Set<Artist> = new Set()
+  current: Set<string> = new Set()
+  next:    Set<string> = new Set()
+  closed:  Set<string> = new Set()
   nodes: NodeEntry[] = []
   links: LinkEntry[] = []
   layer: number = 1
@@ -18,19 +18,19 @@ class Grapher {
   }
 
   async graph(id: string): Promise<GraphData> {
-    let name = (await this.spotify.getArtist(id)).name;
+    let root = (await this.spotify.getArtist(id));
     let albums = await this.spotify.getAlbumsOfArtist(id);
-    let collab = new Collaborations(name);
+    let collab = new Collaborations(root);
     for (let album of albums) {
       try {
         let tracks = await this.spotify.getTracksFromAlbum(album.id)
         collab.parseAlbum(tracks);
       } catch (APIError) {
-        console.log(`oops ${album.id}`);
+        log.error(`oops ${album.id}`);
       }
       await new Promise(r => setTimeout(r, 100));
     }
-    collab.resolve(this.current, this.next, this.closed, this.nodes, this.links);
+    collab.resolve(this.current, this.next, this.closed, this.nodes, this.links, 1);
     
     Collaborations.fillLastLayer(this.nodes, this.next, 2);
     return {

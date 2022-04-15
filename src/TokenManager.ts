@@ -36,7 +36,6 @@ class TokenManager {
     }
   
     let data = JSON.parse(result.data.toString())
-    console.log(data, data.access_token);
   
     this.expiration = new Date();
     this.expiration.setSeconds(this.expiration.getSeconds() + data.expires_in)
