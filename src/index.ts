@@ -69,7 +69,8 @@ app.get('/featmap', (req: Request, res: Response)=> {
 
     spotify.getAlbumsOfArtist(id)
     .then(async (albums) => {
-      let collab = new Collaborations("Szpaku");
+      let name = (await spotify.getArtist(id)).name;
+      let collab = new Collaborations(name);
       log.info(albums)
       for (let album of albums) {
         try {
@@ -78,11 +79,11 @@ app.get('/featmap', (req: Request, res: Response)=> {
         } catch (APIError) {
           console.log(`oops ${album.id}`);
         }
-        await new Promise(r => setTimeout(r, 250));
+        await new Promise(r => setTimeout(r, 100));
       }
       log.info(collab.getTrackNum().toString());
       let closed = new Set<string>([]);
-      let current = new Set<string>(['Szpaku']);
+      let current = new Set<string>([name]);
       let next = new Set<string>([]);
       let nodes: NodeEntry[] = [];
       let links: LinkEntry[] = [];

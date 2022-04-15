@@ -27,6 +27,25 @@ class Spotify {
     this.token = new TokenManager(client_id, secret_key);
   }
 
+  async getArtist(id: string): Promise<any> {
+    var result = await urllib.request(
+      `https://api.spotify.com/v1/artists/${id}`, {
+        method: 'GET',
+        headers: {
+          'Authorization': 'Bearer ' + await this.token.get()
+        },
+      }
+    );
+    if (result.res.statusCode != 200) { // didn't succeed
+      log.error(`Getting artist failed: `,
+                `${result.res.statusCode}: ${result.res.statusMessage} `,
+                `${result.data.toString()}`);
+      throw new APIError(result.res.statusCode);
+    }
+    var info = JSON.parse(result.data.toString());
+    return info;
+  }
+
   async getAlbumsOfArtist(id: string, include_groups?: string): Promise<any> {
     var result = await urllib.request(
       `https://api.spotify.com/v1/artists/${id}/albums?`, {
