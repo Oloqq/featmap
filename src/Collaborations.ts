@@ -71,7 +71,7 @@ class Collaborations {
             next.add(artist.id);
           }
         } else {
-          collaborators.set(artist.id, collaborators.get(artist.name)! + 1)
+          collaborators.set(artist.id, collaborators.get(artist.id)! + 1)
         }
       })  
     })

@@ -41,8 +41,13 @@ class Grapher {
   }
 
   private async goThroughArtist(id: string) {
-    let root = (await this.spotify.getArtist(id));
-    let albums = await this.spotify.getAlbumsOfArtist(id);
+    let root, albums;
+    try {
+      root = (await this.spotify.getArtist(id));
+      albums = await this.spotify.getAlbumsOfArtist(id);
+    } catch (error) {
+      return;
+    }
     let collab = new Collaborations(root);
     for (let album of albums) {
       try {
