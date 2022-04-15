@@ -10,7 +10,7 @@ async function getTracks(artistId: string): Promise<Tracklist> {
     // tracks = tracks.concat(t);
   }
   
-  return [];
+  return new Tracklist();
 }
 
 async function getAlbumIds(artistId: string): Promise<string[]> {

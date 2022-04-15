@@ -1,0 +1,41 @@
+[
+    {
+    "artists": [
+        {
+        "external_urls": {
+            "spotify": "https://open.spotify.com/artist/0Wi2fADbhwXlPUWxBmzo99"
+        },
+        "href": "https://api.spotify.com/v1/artists/0Wi2fADbhwXlPUWxBmzo99",
+        "id": "0Wi2fADbhwXlPUWxBmzo99",
+        "name": "Szpaku",
+        "type": "artist",
+        "uri": "spotify:artist:0Wi2fADbhwXlPUWxBmzo99"
+        },
+        {
+        "external_urls": {
+            "spotify": "https://open.spotify.com/artist/58HrJf2URKRHTdaB28FcLh"
+        },
+        "href": "https://api.spotify.com/v1/artists/58HrJf2URKRHTdaB28FcLh",
+        "id": "58HrJf2URKRHTdaB28FcLh",
+        "name": "PSR",
+        "type": "artist",
+        "uri": "spotify:artist:58HrJf2URKRHTdaB28FcLh"
+        }
+    ],
+    "disc_number": 1,
+    "duration_ms": 162857,
+    "explicit": true,
+    "external_urls": {
+        "spotify": "https://open.spotify.com/track/3oCymcZu2ewG2UlVlRtyo1"
+    },
+    "href": "https://api.spotify.com/v1/tracks/3oCymcZu2ewG2UlVlRtyo1",
+    "id": "3oCymcZu2ewG2UlVlRtyo1",
+    "is_local": false,
+    "is_playable": true,
+    "name": "Afryka",
+    "preview_url": "https://p.scdn.co/mp3-preview/5d2a30f2fc013c50e6e738b9e66498ddd0c6a2ea?cid=774b29d4f13844c495f206cafdad9c86",
+    "track_number": 1,
+    "type": "track",
+    "uri": "spotify:track:3oCymcZu2ewG2UlVlRtyo1"
+    }
+]
