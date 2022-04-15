@@ -56,7 +56,6 @@ const albumSize = 11;
 const single = JSON.parse(fs.readFileSync('test/afryka.json').toString()); // the single is also on the album
 
 describe('Tracklist', () => {
-
   it('parses all songs in an album', () => {
     let t = new Collaborations(Szpaku);
     expect(t.getTrackNum()).eq(0);

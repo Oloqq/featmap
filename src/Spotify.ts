@@ -4,7 +4,8 @@ import urllib from "urllib";
 import fs from "fs";
 import { TokenManager } from "../src/TokenManager";
 
-const albumLimit = 10;
+const albumLimit = 1;
+const trackLimit = 1;
 
 class APIError extends Error {
 	constructor(...params: any[]) {
@@ -80,7 +81,7 @@ class Spotify {
         "Authorization": "Bearer " + await this.token.get()
       },
       data: {
-        limit: 50, // TODO handle ridicolously large albums
+        limit: trackLimit, // TODO handle ridicolously large albums
         market: "PL"
       }
     });
