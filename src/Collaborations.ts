@@ -20,15 +20,14 @@ class Collaborations {
     layerN: number = 0,
     artistLookup: Map<string, Artist>) 
   {
-    console.log(layer)
-    throw 'bruh';
-    // layer.forEach((id) => {
-    //   nodes.push({
-    //     id: artistLookup.get(id)?.name,
-    //     size: 1, // currently treating all artists equally
-    //     layer: layerN
-    //   });
-    // });
+    layer.forEach((id) => {
+      console.log(id)
+      nodes.push({
+        id: artistLookup.get(id)!.name,
+        size: 1, // currently treating all artists equally
+        layer: layerN
+      });
+    });
   }
 
   parseAlbum(tracks: Track[]) {

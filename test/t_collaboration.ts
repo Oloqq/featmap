@@ -42,6 +42,12 @@ artistLookup.set("5GvwPBszaFVYwZS9eMX6vX", {
   name:'Worek5GvwPBszaFVYwZS9eMX6vX',
   id:'5GvwPBszaFVYwZS9eMX6vX'
 });
+artistLookup.set("1oV1ajXGlrUCygNTDn8Ez4", {
+  name:'1oV1ajXGlrUCygNTDn8Ez4asda',
+  id:'1oV1ajXGlrUCygNTDn8Ez4'
+});
+
+
 
 console.log(artistLookup);
 
