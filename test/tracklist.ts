@@ -1,4 +1,4 @@
-import { Collaborations, AlbumTracksFromJSON } from '../src/Tracklist';
+import { Collaborations, AlbumTracksFromJSON } from '../src/Collaborations';
 import { expect } from 'chai';
 import { LinkEntry, NodeEntry } from '../types/tracklist';
 
@@ -23,13 +23,6 @@ describe('Tracklist', () => {
     expect(c.feats.get('Mateusz')).to.deep.eq(['Kubi Producent']);
   })
 
-  it('merges singles and LP tracks if they have the same title and artists', () => {
-    let t = new Collaborations(author);
-    t.parseAlbum(album);
-    t.parseAlbum(single);
-    expect(t.getTrackNum()).eq(albumSize);
-  })
-
   it('updates the search state accordingly', () => {
     let closed = new Set<string>(['Kubi Producent']);
     let current = new Set<string>(['Szpaku', 'PSR']);
@@ -44,7 +37,7 @@ describe('Tracklist', () => {
 
     expect(closed).to.contain(author).and.contain('Kubi Producent');
     expect(current).to.contain('PSR').and.have.lengthOf(1);
-    expect(next).to.have.lengthOf(5).and.not.contain('Kubi Producent');
+    expect(next).to.have.lengthOf(6).and.not.contain('Kubi Producent');
     expect(next).not.to.contain('PSR');
   })
 
@@ -61,7 +54,7 @@ describe('Tracklist', () => {
     t.resolve(current, next, closed, nodes, links);
 
     expect(nodes).have.lengthOf(1);
-    expect(links).have.lengthOf(7);
+    expect(links).have.lengthOf(7); // Kubi is already closed, so 7
   })
 
   it('does not include the main artist in the feats', () => {

@@ -1,4 +1,4 @@
-import { Collaborations } from "./Tracklist";
+import { Collaborations } from "./Collaborations";
 import { token } from "../src/authorizer";
 import urllib from 'urllib';
 import { log } from './log';

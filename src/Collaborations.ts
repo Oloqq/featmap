@@ -1,6 +1,10 @@
 import { TrackDict, Artist, LinkEntry, NodeEntry } from "../types/tracklist";
 const fs = require('fs');
 
+/*
+FIXME if artist has several tracks with the same name (e.g. Intro)
+only the first intro will be checked
+*/
 class AlbumTracksFromJSON {
   constructor(path: string) {
     let rawdata = fs.readFileSync(path);
@@ -36,10 +40,10 @@ class Collaborations {
   {
     current.delete(this.root);
     closed.add(this.root);
-    // nodes.push({
-    //   id: this.root,
-    //   size: 1 // currently treating all artists equally
-    // });
+    nodes.push({
+      id: this.root,
+      size: 1 // currently treating all artists equally
+    });
 
     let collaborators: Map<string, number> = new Map();
 
@@ -56,6 +60,14 @@ class Collaborations {
           collaborators.set(artist, collaborators.get(artist)! + 1)
         }
       })  
+    })
+
+    collaborators.forEach((size, colleague) => {
+      links.push({
+        source: this.root,
+        target: colleague,
+        size
+      })
     })
   }
 
