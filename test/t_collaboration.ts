@@ -1,6 +1,6 @@
 import { Collaborations, AlbumTracksFromJSON } from '../src/Collaborations';
 import { expect } from 'chai';
-import { LinkEntry, NodeEntry } from '../types/tracklist';
+import { LinkEntry, NodeEntry } from '../types/graph';
 
 const author = 'Szpaku';
 const album = new AlbumTracksFromJSON('test/ddzppm.json');
