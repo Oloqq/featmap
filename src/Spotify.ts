@@ -4,6 +4,8 @@ import urllib from "urllib";
 import fs from "fs";
 import { TokenManager } from "../src/TokenManager";
 
+const albumLimit = 10;
+
 class APIError extends Error {
 	constructor(...params: any[]) {
 		// Pass remaining arguments (including vendor specific ones) to parent constructor
@@ -35,7 +37,7 @@ class Spotify {
         data: {
           include_groups: include_groups,
           market: 'PL',
-          limit: 1//50, // TODO handle excessively active artists
+          limit: albumLimit, // TODO handle excessively active artists (over 50 albums)
         }
       }
     );

@@ -88,11 +88,12 @@ app.get('/featmap', (req: Request, res: Response)=> {
       let links: LinkEntry[] = [];
       collab.resolve(current, next, closed, nodes, links);
       Collaborations.fillLastLayer(nodes, next, 2);
-      // fs.writeFileSync("public/temp.json", JSON.stringify({
-      //   nodes: nodes,
-      //   links: links
-      // }));
-      res.render('graph', {skrr: 'yee'});
+      let payload = JSON.stringify({
+        nodes: nodes,
+        links: links
+      })
+
+      res.render('graph', {data: payload});
     })
   }
 });
