@@ -1,22 +1,10 @@
-import { LinkEntry, NodeEntry } from "../types/tracklist";
-import fs from 'fs';
+import { LinkEntry, NodeEntry } from "../types/graph";
+import { Track, Artist } from "../types/spotify";
 
 /*
 FIXME if artist has several tracks with the same name (e.g. Intro)
 only the first intro will be checked
 */
-class AlbumTracksFromJSON {
-  constructor(path: string, data?: string) {
-    if (data) {
-      this.content = data;
-    } else {
-      let rawdata = fs.readFileSync(path);
-      this.content = JSON.parse(rawdata.toString());
-    }
-  }
-
-  content: any;
-}
 
 class Collaborations {
   readonly root: string;
@@ -36,8 +24,8 @@ class Collaborations {
     });
   }
 
-  parseAlbum(tracks: AlbumTracksFromJSON) {
-    tracks.content.forEach((raw_track: any) => {
+  parseAlbum(tracks: Track[]) {
+    tracks.forEach((raw_track: any) => {
       let track_name: string = raw_track.name;
       this.feats.set(track_name, raw_track.artists
         .map((artist: any) => artist.name)
@@ -115,4 +103,4 @@ class Collaborations {
 //   nodes, links
 // }))
 
-export { Collaborations, AlbumTracksFromJSON }
+export { Collaborations }

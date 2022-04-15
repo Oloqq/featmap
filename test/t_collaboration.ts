@@ -1,12 +1,13 @@
-import { Collaborations, AlbumTracksFromJSON } from '../src/Collaborations';
+import { Collaborations } from '../src/Collaborations';
 import { expect } from 'chai';
 import { LinkEntry, NodeEntry } from '../types/graph';
+import fs from 'fs';
 
 const author = 'Szpaku';
-const album = new AlbumTracksFromJSON('test/ddzppm.json');
+const album = JSON.parse(fs.readFileSync('test/ddzppm.json').toString());
 const albumSize = 11;
 
-const single = new AlbumTracksFromJSON('test/afryka.json'); // the single is also on the album
+const single = JSON.parse(fs.readFileSync('test/afryka.json').toString()); // the single is also on the album
 
 describe('Tracklist', () => {
   it('parses all songs in an album', () => {

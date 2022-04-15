@@ -10,4 +10,9 @@ type LinkEntry = {
   size: number
 }
 
-export {LinkEntry, NodeEntry}
+type GraphData = {
+  nodes: NodeEntry[],
+  links: LinkEntry[]
+}
+
+export { LinkEntry, NodeEntry, GraphData }

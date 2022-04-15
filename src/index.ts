@@ -8,10 +8,11 @@ import express from 'express';
 import { AddressInfo } from "net";
 import { Spotify } from "../src/Spotify";
 import { extractId } from '../src/extractId';
-import { AlbumTracksFromJSON, Collaborations } from "../src/Collaborations";
-import { LinkEntry, NodeEntry } from '../types/tracklist';
+import { Collaborations } from "../src/Collaborations";
+import { LinkEntry, NodeEntry } from '../types/graph';
 import fs from "fs";
 import path from 'path';
+import { Grapher } from "./Grapher";
 
 const app = express();
 const session = require('express-session');
@@ -66,36 +67,10 @@ app.get('/featmap', (req: Request, res: Response)=> {
   if (input_id) {
     input_id = input_id.toString();
     let id = extractId.fromAny(input_id);
-
-    spotify.getAlbumsOfArtist(id)
-    .then(async (albums) => {
-      let name = (await spotify.getArtist(id)).name;
-      let collab = new Collaborations(name);
-      log.info(albums)
-      for (let album of albums) {
-        try {
-          let tracks = await spotify.getTracksFromAlbum(album.id)
-          collab.parseAlbum(new AlbumTracksFromJSON('', tracks));
-        } catch (APIError) {
-          console.log(`oops ${album.id}`);
-        }
-        await new Promise(r => setTimeout(r, 100));
-      }
-      log.info(collab.getTrackNum().toString());
-      let closed = new Set<string>([]);
-      let current = new Set<string>([name]);
-      let next = new Set<string>([]);
-      let nodes: NodeEntry[] = [];
-      let links: LinkEntry[] = [];
-      collab.resolve(current, next, closed, nodes, links);
-      Collaborations.fillLastLayer(nodes, next, 2);
-      let payload = JSON.stringify({
-        nodes: nodes,
-        links: links
-      })
-
-      res.render('graph', {data: payload});
-    })
+    let g = new Grapher(spotify);
+    g.graph(id).then((data) => {
+      res.render('graph', {data: JSON.stringify(data)});
+    });
   }
 });
 
