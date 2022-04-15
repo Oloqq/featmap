@@ -10,6 +10,8 @@ import { Spotify } from "../src/Spotify";
 import { extractId } from '../src/extractId';
 import { AlbumTracksFromJSON, Collaborations } from "../src/Collaborations";
 import { LinkEntry, NodeEntry } from '../types/tracklist';
+import fs from "fs";
+import path from 'path';
 
 const app = express();
 const session = require('express-session');
@@ -32,6 +34,15 @@ app.use(session({
   saveUninitialized: true,
   resave: true,
 }));
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, './views'))
+
+app.get('/tmp', (req: Request, res: Response) => {
+  // res.render('graph', {data: JSON.stringify({a: 2})});
+  let data = JSON.stringify(JSON.parse(fs.readFileSync("public/szpaku.json").toString()));
+  console.log(data)
+  res.render('graph', {data});
+});
 
 // Routing
 app.get('/', (req: Request, res: Response)=> {
@@ -77,10 +88,11 @@ app.get('/featmap', (req: Request, res: Response)=> {
       let links: LinkEntry[] = [];
       collab.resolve(current, next, closed, nodes, links);
       Collaborations.fillLastLayer(nodes, next, 2);
-      res.send(JSON.stringify({
-        nodes: nodes,
-        links: links
-      }));
+      // fs.writeFileSync("public/temp.json", JSON.stringify({
+      //   nodes: nodes,
+      //   links: links
+      // }));
+      res.render('graph', {skrr: 'yee'});
     })
   }
 });
@@ -90,7 +102,7 @@ var listener = app.listen(process.env.PORT, () => {
   log.info(`App is listening on port ${(listener.address() as AddressInfo).port}`);
 });
 
-(async () => {
-  log.info('bruh');
-  log.info(await spotify.getTracksFromAlbum('7nySql4UFcZP60opHqnAMv'));
-})();
+// (async () => {
+//   log.info('bruh');
+//   log.info(await spotify.getTracksFromAlbum('7nySql4UFcZP60opHqnAMv'));
+// })();

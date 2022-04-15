@@ -35,7 +35,7 @@ class Spotify {
         data: {
           include_groups: include_groups,
           market: 'PL',
-          limit: '50', // TODO handle excessively active artists
+          limit: 1//50, // TODO handle excessively active artists
         }
       }
     );
