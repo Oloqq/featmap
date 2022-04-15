@@ -15,14 +15,14 @@ class AlbumTracksFromJSON {
 }
 
 class Collaborations {
-  root: string;
+  readonly root: string;
   feats: Map<string, string[]> = new Map();
 
   constructor(author: string) {
     this.root = author;
   }
 
-  static fillLastLayer(nodes: NodeEntry[], layer: Set<string>, layerN: number) {
+  static fillLastLayer(nodes: NodeEntry[], layer: Set<string>, layerN: number = 0) {
     layer.forEach((node) => {
       nodes.push({
         id: node,
@@ -90,25 +90,25 @@ class Collaborations {
   }
 }
 
-const author = 'Szpaku';
-const album = new AlbumTracksFromJSON('test/ddzppm.json');
-const albumSize = 11;
+// const author = 'Szpaku';
+// const album = new AlbumTracksFromJSON('test/ddzppm.json');
+// const albumSize = 11;
 
-let closed = new Set<string>(['Kubi Producent']);
-let current = new Set<string>(['Szpaku']);
-let next = new Set<string>(['Worek']);
-let nodes: NodeEntry[] = [];
-let links: LinkEntry[] = [];
+// let closed = new Set<string>(['Kubi Producent']);
+// let current = new Set<string>(['Szpaku']);
+// let next = new Set<string>(['Worek']);
+// let nodes: NodeEntry[] = [];
+// let links: LinkEntry[] = [];
 
-let t = new Collaborations(author);
-t.parseAlbum(album);
+// let t = new Collaborations(author);
+// t.parseAlbum(album);
 
-t.resolve(current, next, closed, nodes, links, 1);
+// t.resolve(current, next, closed, nodes, links, 1);
 
-current = next;
-Collaborations.fillLastLayer(nodes, current, 2);
-fs.writeFileSync('public/ddzppm.json', JSON.stringify({
-  nodes, links
-}))
+// current = next;
+// Collaborations.fillLastLayer(nodes, current, 2);
+// fs.writeFileSync('public/ddzppm.json', JSON.stringify({
+//   nodes, links
+// }))
 
 export { Collaborations, AlbumTracksFromJSON }

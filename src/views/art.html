@@ -14,7 +14,7 @@
             .graphData(data)
             .nodeId('id')
             .nodeAutoColorBy('group')
-            // .linkWidth('val')
+            .linkWidth('size')
             .nodeCanvasObject((node, ctx, globalScale) => {
               const label = node.id;
               const fontSize = 20/globalScale;

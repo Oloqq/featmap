@@ -66,15 +66,19 @@ describe('Tracklist', () => {
   })
 
   it('fills the last layer of feats', () => {
-    let c = new Collaborations(author);
-    c.parseAlbum(album);
-    c.feats.forEach((feats: string[], name: string) => {
-      expect(feats).not.to.contain(author);
-    })
+    let closed = new Set<string>([]);
+    let current = new Set<string>(['Szpaku']);
+    let next = new Set<string>([]);
+    let nodes: NodeEntry[] = [];
+    let links: LinkEntry[] = [];
+
+    let t = new Collaborations(author);
+    t.parseAlbum(album);
+
+    t.resolve(current, next, closed, nodes, links);
+    Collaborations.fillLastLayer(nodes, next, 2);
+
+    expect(nodes).have.lengthOf(9);
+    expect(links).have.lengthOf(8);
   })
-
-
-
-  // it('stops the search after reaching specified distance from root', () => {
-  // })
 });
