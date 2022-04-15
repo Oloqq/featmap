@@ -12,12 +12,10 @@ const useragent = require('express-useragent');
 import { AddressInfo } from "net";
 
 import { Spotify } from "../src/Spotify";
-const spotify = new Spotify();
-if (process.env.SPOTIFY_ID && process.env.SPOTIFY_SECRET) {
-  spotify.setAuthorization(process.env.SPOTIFY_ID, process.env.SPOTIFY_SECRET);
-} else {
+if (!process.env.SPOTIFY_ID || !process.env.SPOTIFY_SECRET) {
   throw new Error('Missing SPOTIFY_ID or SPOTIFY_SECRET environement variable');
 }
+const spotify = new Spotify(process.env.SPOTIFY_ID, process.env.SPOTIFY_SECRET);
 
 log.info('Booting up... ', Date());
 
@@ -67,8 +65,3 @@ app.get('/featmap', (req: Request, res: Response)=> {
 var listener = app.listen(process.env.PORT, () => {
   log.info(`App is listening on port ${(listener.address() as AddressInfo).port}`);
 });
-
-// import { token } from "../src/authorizer";
-// token()
-// import { getTracksFromAlbum } from "../src/tracks";
-// getTracksFromAlbum('0msLBh7Jo7cFkvTrigflxi');

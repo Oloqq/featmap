@@ -1,7 +1,7 @@
-import { Collaborations } from "./Collaborations";
-import { token } from "../src/authorizer";
-import urllib from 'urllib';
-import { log } from './log';
+// import { Collaborations } from "./Collaborations";
+// import { token } from "../src/authorizer";
+// import urllib from 'urllib';
+// import { log } from './log';
 
 // async function getTracks(artistId: string): Promise<Collaborations> {
 //   let albums = await getAlbumIds(artistId);
@@ -15,28 +15,6 @@ import { log } from './log';
 
 // async function getAlbumIds(artistId: string): Promise<string[]> {
 //   return [];
-// }
-
-
-
-// async function getTracksFromAlbum(userId, albumId, token=undefined) {
-// 	log.info(`Getting tracks of album ${albumId}`);
-// 	token = token ? token : await getToken(userId);	
-// 	var result = await urllib.request(
-// 		`https://api.spotify.com/v1/albums/${albumId}/tracks?` + querystring.stringify({
-// 			limit: '50'
-// 		}), {
-// 		method: 'GET',
-// 		headers: {
-// 			'Authorization': 'Bearer ' + token
-// 		},
-// 	});
-// 	if (result.res.statusCode != 200) { // didn't succeed
-// 		log.error(`Getting tracks from album failed: ${result.res.statusCode}: ${result.res.statusMessage}. ${result.data.toString()}`);
-// 		throw new APIError(result.res.statusCode);
-// 	}
-// 	var tracks = JSON.parse(result.data.toString()).items;
-// 	return tracks;
 // }
 
 // async function getRecentStuffOfArtist(userId, artistId, threshold, stuffType,
@@ -90,4 +68,4 @@ import { log } from './log';
 // 	return albums;
 // }
 
-export { getTracks, getTracksFromAlbum }
+// export { getTracks, getTracksFromAlbum }

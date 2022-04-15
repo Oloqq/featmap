@@ -14,15 +14,15 @@ class Spotify {
 
   async getTracksFromAlbum(albumId: string): Promise<string[]> {
     var result = await urllib.request(
-      `https://api.spotify.com/v1/albums/${albumId}/tracks?limit=50&market=PL`, {
+      `https://api.spotify.com/v1/albums/${albumId}/tracks?`, {
       method: "GET",
       headers: {
         "Authorization": "Bearer " + await this.token.get()
       },
-      // data: {
-      //   limit: 50, // TODO handle ridicolously large albums
-      //   market: "PL'
-      // }
+      data: {
+        limit: 50, // TODO handle ridicolously large albums
+        market: "PL"
+      }
     });
     if (result.res.statusCode != 200) { // didn't succeed
       log.error(`Getting tracks from album failed: ${result.res.statusCode}: ${result.res.statusMessage}. ${result.data.toString()}`);

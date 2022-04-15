@@ -44,6 +44,4 @@ class TokenManager {
   }
 }
 
-// let token = new TokenManager();
-
 export { TokenManager }
