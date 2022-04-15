@@ -14,7 +14,14 @@ describe('Tracklist', () => {
     expect(t.getTrackNum()).eq(0);
     t.parseAlbum(album);
     expect(t.getTrackNum()).eq(albumSize);
+    expect(t.feats.has('Mateusz'));
   });
+
+  it('recognizes artists properly', () => {
+    let c = new Collaborations(author);
+    c.parseAlbum(album);
+    expect(c.feats.get('Mateusz')).to.deep.eq(['Kubi Producent']);
+  })
 
   it('merges singles and LP tracks if they have the same title and artists', () => {
     let t = new Collaborations(author);
@@ -25,7 +32,7 @@ describe('Tracklist', () => {
 
   it('updates the search state accordingly', () => {
     let closed = new Set<string>(['Kubi Producent']);
-    let current = new Set<string>(['PSR']);
+    let current = new Set<string>(['Szpaku', 'PSR']);
     let next = new Set<string>(['Worek']);
     let nodes: NodeEntry[] = [];
     let links: LinkEntry[] = [];
@@ -43,7 +50,7 @@ describe('Tracklist', () => {
 
   it('updates nodes and links accordingly', () => {
     let closed = new Set<string>(['Kubi Producent']);
-    let current = new Set<string>(['PSR']);
+    let current = new Set<string>(['Szpaku', 'PSR']);
     let next = new Set<string>(['Worek']);
     let nodes: NodeEntry[] = [];
     let links: LinkEntry[] = [];
