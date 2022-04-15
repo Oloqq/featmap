@@ -2,16 +2,22 @@ if (process.env.NODE_ENV !== 'production') {
   require('dotenv').config();
 }
 
+import { log } from './log';
 import { Request, Response } from "express";
-
-// Dependecies
 import express from 'express';
-import { AddressInfo } from "net";
 const app = express();
 const session = require('express-session');
 const useragent = require('express-useragent');
-import { log } from './log';
-import fs from 'fs';
+
+import { AddressInfo } from "net";
+
+import { Spotify } from "../src/Spotify";
+const spotify = new Spotify();
+if (process.env.SPOTIFY_ID && process.env.SPOTIFY_SECRET) {
+  spotify.setAuthorization(process.env.SPOTIFY_ID, process.env.SPOTIFY_SECRET);
+} else {
+  throw new Error('Missing SPOTIFY_ID or SPOTIFY_SECRET environement variable');
+}
 
 log.info('Booting up... ', Date());
 
