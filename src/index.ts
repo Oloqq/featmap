@@ -40,9 +40,15 @@ app.set('views', path.join(__dirname, './views'))
 
 app.get('/tmp', (req: Request, res: Response) => {
   // res.render('graph', {data: JSON.stringify({a: 2})});
-  let data = JSON.stringify(JSON.parse(fs.readFileSync("public/szpaku.json").toString()));
-  res.render('graph', {data});
+  // let data = JSON.stringify(JSON.parse(fs.readFileSync("public/szpaku.json").toString()));
+  // res.render('graph', {data});
+  res.sendFile(`${__dirname}/views/json.html`);
 });
+
+app.post('/gimmedata', (req: Request, res: Response)=> {
+  let kacp = fs.readFileSync(`${__dirname}/../data/Kacperczyk.json`);
+  res.send(kacp);
+})
 
 // Routing
 app.get('/', (req: Request, res: Response)=> {
@@ -55,10 +61,6 @@ app.get('/json', (req: Request, res: Response)=> {
 
 app.get('/text', (req: Request, res: Response)=> {
   res.sendFile(`${__dirname}/views/text.html`);
-});
-
-app.get('/art', (req: Request, res: Response)=> {
-  res.sendFile(`${__dirname}/views/art.html`);
 });
 
 app.get('/featmap', (req: Request, res: Response)=> {
