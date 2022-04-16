@@ -13,6 +13,7 @@ import { LinkEntry, NodeEntry } from '../types/graph';
 import fs from "fs";
 import path from 'path';
 import { Grapher } from "./Grapher";
+// import { BodyParser } from "body-parser";
 
 const app = express();
 const session = require('express-session');
@@ -30,6 +31,7 @@ app.use(express.static("public"));
 app.use(useragent.express());
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
+// app.use()
 app.use(session({
   secret: process.env.SESSION_SECRET,
   saveUninitialized: true,
@@ -38,30 +40,28 @@ app.use(session({
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, './views'))
 
-app.get('/tmp', (req: Request, res: Response) => {
-  // res.render('graph', {data: JSON.stringify({a: 2})});
-  // let data = JSON.stringify(JSON.parse(fs.readFileSync("public/szpaku.json").toString()));
-  // res.render('graph', {data});
-  res.sendFile(`${__dirname}/views/json.html`);
-});
-
-app.post('/gimmedata', (req: Request, res: Response)=> {
-  let kacp = fs.readFileSync(`${__dirname}/../data/Kacperczyk.json`);
-  res.send(kacp);
-})
-
 // Routing
 app.get('/', (req: Request, res: Response)=> {
   res.sendFile(`${__dirname}/views/index.html`);
 });
 
-app.get('/json', (req: Request, res: Response)=> {
-  res.sendFile(`${__dirname}/views/json.html`);
-});
+app.post('/gimmedata', (req: Request, res: Response)=> {
+  console.log(req.body);
 
-app.get('/text', (req: Request, res: Response)=> {
-  res.sendFile(`${__dirname}/views/text.html`);
-});
+  let input_id = req.body['artist'];
+  if (input_id) {
+    input_id = input_id.toString();
+    let id = extractId.fromAny(input_id);
+    let g = new Grapher(spotify);
+    g.graph(id).then((data) => {
+      // res.render('graph', {data: JSON.stringify(data)});
+      res.send(data);
+    });
+  }
+
+  // let kacp = fs.readFileSync(`${__dirname}/../data/Kacperczyk.json`);
+  // res.send(kacp);
+})
 
 app.get('/featmap', (req: Request, res: Response)=> {
   let input_id = req.query['artist'];

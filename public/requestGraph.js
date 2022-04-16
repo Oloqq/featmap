@@ -1,12 +1,19 @@
 'use strict';
 
+var form = document.forms["form"]
 var submitButton = document.getElementById("submit");
 
 submitButton.addEventListener("click", requestGraph);
 
 function requestGraph() {
   fetch('/gimmedata', {
-    method: 'POST'
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      artist: form["artist"].value
+    })
   }).then(res => res.json()).then(data => {
     const Graph = ForceGraph()
     (document.getElementById('graph'))
